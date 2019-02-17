@@ -18,7 +18,7 @@ if($args){
     // get record(s) with criteria
    //print_r($args);
      // get all records 
-     $query = "SELECT * FROM user_meta WHERE user_id = '".$args['id']."' ";
+     $query = "SELECT * FROM users WHERE id = '".$args['id']."' ";
      $data =  queryDB( $mysqli, $query);
      
      if(isset($data)) {
@@ -28,7 +28,7 @@ if($args){
     
 }else{
     // get all records 
-    $query = "SELECT * FROM user_meta ";
+    $query = "SELECT * FROM users ";
     $data =  queryDB( $mysqli, $query);
      
     if(isset($data)) {

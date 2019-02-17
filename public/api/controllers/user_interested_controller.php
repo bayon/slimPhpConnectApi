@@ -4,26 +4,41 @@ require_once('_dbconnect.php');
 
 /*
 Description:
-
 */
 
-/* Check Request Parameters:
-if( !isset( $_POST['username'] ) ) { exit( json_encode([0, "missing parameters"])); }
+/* 
+Check Request Parameters:
+*/
  
+/* 
+Query The Database and Create Response
 */
 
-/* Query The Database and Create Response
-$query = 'SELECT * FROM users WHERE email="'.$_POST['username'].'"';
-$result= $mysqli->query($query);
-while($row = $result->fetch_assoc()) {
-    $data[] = $row;
-}
-if(isset($data)) {
-   // create response  
-    header('content-type: application/json');
-    echo json_encode($response);
+if($args){
+    // get record(s) with criteria
+   //print_r($args);
+     // get all records 
+     $query = "SELECT * FROM user_interested WHERE user_id = '".$args['id']."' ";
+     $data =  queryDB( $mysqli, $query);
+     
+     if(isset($data)) {
+        response($data, 'json');
+     } 
+    
+    
+}else{
+    // get all records 
+    $query = "SELECT * FROM user_interested ";
+    $data =  queryDB( $mysqli, $query);
+     
+    if(isset($data)) {
+       response($data, 'json');
+    } 
 } 
-*/
+
+
+
+
 
 /*
 Expected Response Format:
