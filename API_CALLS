@@ -1,0 +1,93 @@
+Bayons-MacBook-Pro:connect bayon$ grep -r "VBRequest.postRequest" ios-connect/*
+
+
+ 
+API: how to 
+LOGIN: http://connect.itsvibrant.com/api/login  AS 'form-data' WITH body params [username,password]
+* Should Get login_token in the response body, which you can add as a 'body parameter'
+
+EVENTS:
+VCS/EventCreation/EventCreationReviewViewController.swift:        VBRequest.postRequest(urlstring: API + "add_event", params: params)
+
+HOME:
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "get_organization",             params: params, callback: Organization.setFromJSON)         params = organization_id
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "get_organizationmeta",         params: params, callback: Organization.setMetaFromJSON)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "get_organizationhours",        params: params, callback: Organization.setHoursFromJSON)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "get_user",                     params: params, callback: User.setFromJSON)                 params = user_id
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "get_usermeta",                 params: params, callback: User.setMetaFromJSON)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "ice_breakers",                 params: params, callback: finishIceBreakersCallback)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "events",                       params: params, callback: getEventsCallback)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "events_bydate",                params: params, callback: getEventsCallback)                params = orgainization_id,user_id
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "events_bydate_foruser",        params: params, callback: getEventsCallback)
+VCS/HomeViewController.swift:        VBRequest.postRequest(urlstring: API + "user_interested",              params: params, callback: testingcallback)
+
+PROFILE USER:
+VCS/Profile/UserProfileViewController.swift:            VBRequest.postRequest(urlstring: API + "get_user",              params: params, callback: setFromJSON)          params = user_id
+VCS/Profile/UserProfileViewController.swift:            VBRequest.postRequest(urlstring: API + "get_usermeta",          params: params, callback: setMetaFromJSON)
+VCS/Profile/UserProfileViewController.swift:            VBRequest.postRequest(urlstring: API + "get_interestedevents",  params: params, callback: setUserInterestedEvents)
+VCS/Profile/UserProfileViewController.swift:            VBRequest.postRequest(urlstring: API + "update_userprofile",    params: params, callback: User.setMetaFromJSON) params: user_id,profession,alma_matter,bio
+VCS/Profile/UserProfileViewController.swift:            VBRequest.postRequest(urlstring: API + "update_imagepath_user", params: params)
+
+PROFILE ORGANIZATION:
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organization",                  params: params, callback: setFromJSON)                  params = organization_id
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organizationmeta",              params: params, callback: setMetaFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organizationhours",             params: params, callback: setHoursFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organization_events",           params: params, callback: setOrganizationEvents)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organization",                  params: params, callback: setFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organizationmeta",              params: params, callback: setMetaFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organizationhours",             params: params, callback: setHoursFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "get_organization_events",           params: params, callback: setOrganizationEvents)
+VCS/Profile/OrganizationProfileViewController.swift://  VBRequest.postRequest(urlstring: API + "get_user",                          params: params, callback: User.setFromJSON)             params = user_id
+VCS/Profile/OrganizationProfileViewController.swift://  VBRequest.postRequest(urlstring: API + "get_usermeta",                      params: params, callback: User.setMetaFromJSON)
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "update_organizationprofile",        params: params, callback: Organization.setMetaFromJSON)  params = organization_id, description
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "update_imagepath_organization",     params: params)                                          params = imagepath, organization_id
+VCS/Profile/OrganizationProfileViewController.swift:    VBRequest.postRequest(urlstring: API + "update_organizationprofile",        params: params, callback: Organization.setMetaFromJSON)
+
+EVENT:
+VCS/Event/EditEventInfoViewController.swift:        VBRequest.postRequest(urlstring:    API + "update_event",   params: params, callback: printcallback)                                     params = event_id
+VCS/Event/EditEventViewController.swift:            VBRequest.postRequest(urlstring:    API + "delete_event",   params: params)
+
+REGISTRATION ORGANIZATIONS:
+VCS/Login/Registration/Organizations/CreateYourOrganizationPasswordViewController.swift:      //VBRequest.postRequest(urlstring:    API + "update_organizationhours",   params: params)
+VCS/Login/Registration/Organizations/CreateYourOrganizationPasswordViewController.swift:        VBRequest.postRequest(urlstring:    API + "check_existingemail",        params: params, callback: gotonext)                     params = email
+VCS/Login/Registration/Organizations/CreateYourOrganizationPasswordViewController.swift:        VBRequest.postRequest(urlstring:    API + "sms_userverification",       params: params, callback: gotVerificationCodeCallback)  params = phone
+VCS/Login/Registration/Organizations/CreateYourOrganizationPasswordViewController.swift:      //VBRequest.postRequest(urlstring:    API + "register_organization",      params: params, callback: inserthours)
+VCS/Login/Registration/Organizations/OrganizationVerificationViewController.swift:              VBRequest.postRequest(urlstring:    API + "register_organization",      params: params, callback: inserthours)                  params (vary as d.key dictionary key)
+VCS/Login/Registration/Organizations/OrganizationVerificationViewController.swift:              VBRequest.postRequest(urlstring:    API + "update_organizationhours",   params: params)                                         params = organization_id
+
+REGISTRATION INDIVIDUALS:
+VCS/Login/Registration/Individuals/IceBreaker/MultipleChoiceViewController.swift:                           VBRequest.postRequest(urlstring:        API + "answered_icebreaker",    params: params)                                         params = answer, ice_breakers_id, user_id
+VCS/Login/Registration/Individuals/CreateYourProfile/CreateYourProfilePasswordViewController.swift:       //VBRequest.postRequest(urlstring:        API + "register",               params: params, callback: gotonext)
+VCS/Login/Registration/Individuals/CreateYourProfile/CreateYourProfilePasswordViewController.swift:         VBRequest.postRequest(urlstring:        API + "sms_userverification",   params: params, callback: gotVerificationCodeCallback)  params = phone
+VCS/Login/Registration/Individuals/CreateYourProfile/CreateYourProfilePasswordViewController.swift:         VBRequest.postRequest(urlstring:        API + "sms_userverification",   params: params, callback: gotVerificationCodeCallback)
+VCS/Login/Registration/Individuals/CreateYourProfile/UserVerificationViewController.swift:                  VBRequest.postRequest(urlstring:        API + "register",               params: params, callback: gotonext)                     params = [first_name, last_name, address, gender, age, birthday, zip, email, phone, password, imagepath ]
+VCS/Login/Registration/Individuals/CreateYourProfile/UserVerificationViewController.swift:                //VBRequest.postRequest(urlstring:        API + "register",               params: params, callback: callback)
+VCS/Login/Registration/Individuals/CreateYourProfile/CreateYourProfileTextViewController.swift:             VBRequest.postRequest(urlstring:        API + "check_existingemail",    params: params, callback: gotonext)                     params = email 
+
+SIGNIN:
+VCS/Login/Signin/SigninViewController.swift:        VBRequest.postRequest(urlstring:    API + "login",          params: params, callback: continuelogin)    params = username, password  RETURNS login_token
+
+INITIAL CALLS:
+Model/InitialCalls.swift:                           VBRequest.postRequest(urlstring:    API + "ice_breakers",   params: params, callback: iceBreakerCallback) params = [] none
+
+
+
+Encryption / Decryption:
+https://www.youtube.com/watch?v=GGcZ2lCjzqQ
+composer require defuse/php-encryption
+
+code:
+use Defuse\Crypto\Crypto;
+use Defuse\Crypto\Key;
+
+require "vendor/autoload.php" 
+
+//Do this once and then store it somehow.
+$key = Key::createNewRandomKey();
+
+$message = "We are learning php.";
+
+$encrypt = Crypto::encrypt($message, $key);
+$decrypt = Crypto::decrypt($encrypt, $key) ;
+
+
